@@ -5,7 +5,7 @@
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "expected": "webpack --progress --config webpack-expected.config.coffee",
+    "expected": "webpack -w --progress --config webpack-expected.config.coffee",
     "desired": "webpack -w --progress --config webpack-desired.config.coffee"
   },
   "repository": {
