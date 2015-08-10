@@ -1,0 +1,20 @@
+@import "~angular-material/angular-material";
+
+md-sidenav .md-button {
+  text-align: left;
+}
+
+.clients md-grid-tile {
+  background: white;
+}
+
+.clients md-fab-speed-dial {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.sidenav {
+  background: #333;
+  color: white;
+}

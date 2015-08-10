@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en" ng-app="TestApp">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test Material</title>
+    <base href="/">
+    {% var css = (o.htmlWebpackPlugin.files.chunks['material'] || {})['css'] || []; %}
+    {% for (var i=0; i< css.length; i++) { %}
+      <link rel="stylesheet" href="{%= css[i] %}">
+    {% } %}
+    <style type="text/css">
+      .ng-hide { display: none !important; }
+    </style>
+  </head>
+  <body layout="column" ng-controller="Dashboard">
+    <md-toolbar layout="row" class="md-whiteframe-z2">
+      <div class="md-toolbar-tools">
+        <span>Test Webpack</span>
+        <span flex></span>
+        <md-button
+          ng-click="toggleSidenav('left')"
+          hide-gt-sm class="md-icon-button">
+
+          <md-icon>menu</md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <div layout="row" flex>
+        <md-sidenav layout="column" md-theme="default-dark" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
+          <md-list>
+            <md-list-item ac-nav-highlight='^/($|dashboard)'>
+              <md-button flex href="/dashboard">Dashboard</md-button>
+            </md-list-item>
+            <md-list-item ac-nav-highlight='^/browse'>
+              <md-button flex href="/browse">Clients, Projects &amp;& Tasks</md-button>
+            </md-list-item>
+            <md-list-item ac-nav-highlight='^/people'>
+              <md-button flex href="/people">People</md-button>
+            </md-list-item>
+            <md-list-item ac-nav-highlight='^/reports'>
+              <md-button flex href="/reports">Reports</md-button>
+            </md-list-item>
+            <md-list-item ac-nav-highlight='^/timeline'>
+              <md-button flex href="/timeline">Timeline</md-button>
+            </md-list-item>
+          </md-list>
+        </md-sidenav>
+        <div  class="clients" layout="column" flex id="content">
+            <md-content class="md-padding">
+            </md-content>
+            <md-fab-speed-dial md-direction="up" class="md-scale">
+              <md-fab-trigger>
+                <md-button aria-label="menu" class="md-fab md-warn">
+                  <md-icon>menu</md-icon>
+                </md-button>
+              </md-fab-trigger>
+              <md-fab-actions>
+                <md-button aria-label="new" class="md-fab md-accent md-raised md-mini md-hue-3">
+                  <md-tooltip md-direction="left">
+                    Add Client
+                  </md-tooltip>
+                  <md-icon>add</md-icon>
+                </md-button>
+                <md-button aria-label="archive" class="md-fab md-accent md-raised md-mini md-hue-3">
+                  <md-tooltip md-direction="left">
+                    Archive
+                  </md-tooltip>
+                  <md-icon>lock</md-icon>
+                </md-button>
+                <md-button aria-label="un-archive" class="md-fab md-accent md-raised md-mini md-hue-3">
+                  <md-tooltip md-direction="left">
+                    Un-Archive
+                  </md-tooltip>
+                  <md-icon>lock_open</md-icon>
+                </md-button>
+              </md-fab-actions>
+            </md-fab-speed-dial>
+        </div>
+    </div>
+    {% var entries = ['vendor', 'common', 'material']; %}
+    {% for (var i=0; i< entries.length; i++) { %}
+      {% var entry = (o.htmlWebpackPlugin.files.chunks[entries[i]] || {}).entry; %}
+      {% if (entry) { %}
+        <script src="{%= entry %}"></script>
+      {% } %}
+    {% } %}
+  </body>
+</html>
