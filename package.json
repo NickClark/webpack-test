@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "expected": "webpack -w --progress --config webpack-expected.config.coffee",
-    "desired": "webpack -w --progress --config webpack-desired.config.coffee"
+    "desired": "webpack -w --progress --config webpack-desired.config.coffee",
+    "images": "webpack -w --progress --display-reasons --display-error-details --config webpack-images.config.coffee"
   },
   "repository": {
     "type": "git",
@@ -34,13 +35,16 @@
     "coffee-script": "^1.9.3",
     "css-loader": "^0.15.6",
     "extract-text-webpack-plugin": "^0.8.2",
+    "file-loader": "^0.8.4",
     "glob": "^5.0.14",
+    "html-loader": "^0.3.0",
     "html-webpack-plugin": "^1.6.1",
     "jade": "^1.11.0",
     "jade-loader": "^0.7.1",
     "ng-annotate-webpack-plugin": "^0.1.2",
     "node-sass": "^3.2.0",
     "sass-loader": "^2.0.0",
+    "url-loader": "^0.5.6",
     "webpack": "^1.11.0"
   },
   "dependencies": {
